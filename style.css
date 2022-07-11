@@ -1,0 +1,10 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+header{
+    background: linear-gradient(to right, #130ff6, #13a8f2, #14efeb);
+}
+.container {
+    padding: 20px
+}
