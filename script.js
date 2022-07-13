@@ -1,12 +1,12 @@
 var weatherApiKey ='da8c5a6540ac11ba3df901df43f83982';
 var weatherDirectUrl = 'http://api.openweathermap.org/geo/1.0/direct';
 var weatherGeoUrl = 'https://api.openweathermap.org/data/2.5/onecall'
-var searchHistory = [];
+var searchHistory = [ ];
 var formInputEl = document.querySelector('#form-input');
 var searchFormEl = document.querySelector('#search-form')
 var today = moment().format("MMM Do, YYYY");
 var searchHistoryEL = document.querySelector('#search-history')
-// var forecastContainer = $('.forecast');
+
 
 
 var formSubmitHandler = function (event) {
@@ -73,7 +73,17 @@ var formSubmitHandler = function (event) {
         <p>Current temp: ${curentTemp}</p>
         <p>Wind: ${wind}</p>
         <p>Humidity: ${humidity}</p>
-        <p>UV Index: ${uvIndex}</p></div>`);
+        <p>UV Index: <button class="button is-small"> ${uvIndex}</button>
+        </div>`);
+
+            if (uvIndex < 3) {
+                $('.is-small').addClass("is-success");
+              } else if (uvIndex > 7) {
+                $('.is-small').addClass("is-danger");
+              } else {
+                $('.is-small').addClass("is-warning");
+              }
+
   }
 
   function renderForecast(forecast) {
@@ -126,13 +136,13 @@ function renderSearches() {
 }
   
 
-function setHistory(search) {
+// function setHistory(search) {
     
-    searchHistory.push(search);
+//     searchHistory.push(search);
 
-    localStorage.setItem('search-history', JSON.stringify(searchHistory));
-    renderSearches();
-  }
+//     localStorage.setItem('search-history', JSON.stringify(searchHistory));
+//     renderSearches();
+//   }
 
 //   function handleSearchHistoryClick(e) {
 //     if (!e.target.matches('.btn-history')) {
