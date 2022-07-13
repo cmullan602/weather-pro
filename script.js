@@ -13,7 +13,6 @@ var formSubmitHandler = function (event) {
     event.preventDefault();
   
     var search = formInputEl.value.trim();
-    console.log(search)
   
     if (search) {
       getGeoLocation(search);
@@ -31,7 +30,7 @@ var formSubmitHandler = function (event) {
         if (response.ok) {
           response.json().then(function (data) {
             fetchWeatherData(data[0]);
-            appendToHistory(search)
+            setHistory(search)
 
           });
         } else {
@@ -104,38 +103,53 @@ var formSubmitHandler = function (event) {
 
   }
 
-//   function searchHistory (search){
-//       $("#search-history").append(`
-//       <button>${search}</button>
-//       `)
-//   }
+//   var handleSearchHistoryClick = function (event) {
+//     var search = event.target.getAttribute('data-search');
+  
+//     if (search) {
+//         getGeoLocation(search);
+  
+//     }
+//   };
 
 function renderSearches() {
     var storedHistory = localStorage.getItem('search-history');
-    $("#search-history").append(`
-      <button class="button btn-history is-fullwidth data-search="${storedHistory}>${storedHistory}</button>
-      `)
-  }
+    
+      searchHistory = JSON.parse(storedHistory);
+    
+      $.each(searchHistory, function( i, searchHistory){
+        $("#search-history").append(`
+        <button class="button btn-history is-fullwidth" data-search="${searchHistory}">${searchHistory}</button>
+        `)
+    });
+    
+}
   
 
-function appendToHistory(search) {
-    localStorage.setItem('search-history', search);
-              $("#search-history").append(`
-      <button class="button btn-history is-fullwidth data-search="${search}">${search}</button>
-      `)
+function setHistory(search) {
+    
+    searchHistory.push(search);
+
+    localStorage.setItem('search-history', JSON.stringify(searchHistory));
+    renderSearches();
   }
 
-  function handleSearchHistoryClick(e) {
-    if (!e.target.matches('.btn-history')) {
-      return;
-    }
+//   function handleSearchHistoryClick(e) {
+//     if (!e.target.matches('.btn-history')) {
+//       return;
+//     }
   
-    var btn = e.target;
-    var search = btn.getAttribute('data-search');
-    getGeoLocation(search);
-  }
+//     var btn = e.target;
+//     var search = btn.getAttribute('data-search');
+//     getGeoLocation(search);
+//   }
+
+  $("#search-history").on('click', function() {
+    $(this).attr("data-search") 
+    console.log($(this))
+  });
   
 renderSearches();
  searchFormEl.addEventListener('submit', formSubmitHandler);
- searchHistoryEL.addEventListener('click', handleSearchHistoryClick);
+//  searchHistoryEL.addEventListener('click', handleSearchHistoryClick);
 
