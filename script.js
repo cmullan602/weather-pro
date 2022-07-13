@@ -1,7 +1,7 @@
 var weatherApiKey ='da8c5a6540ac11ba3df901df43f83982';
 var weatherDirectUrl = 'http://api.openweathermap.org/geo/1.0/direct';
 var weatherGeoUrl = 'https://api.openweathermap.org/data/2.5/onecall'
-var searchHistory = [ ];
+var searchHist = [];
 var formInputEl = document.querySelector('#form-input');
 var searchFormEl = document.querySelector('#search-form')
 var today = moment().format("MMM Do, YYYY");
@@ -113,21 +113,14 @@ var formSubmitHandler = function (event) {
 
   }
 
-//   var handleSearchHistoryClick = function (event) {
-//     var search = event.target.getAttribute('data-search');
-  
-//     if (search) {
-//         getGeoLocation(search);
-  
-//     }
-//   };
+
 
 function renderSearches() {
     var storedHistory = localStorage.getItem('search-history');
-    
-      searchHistory = JSON.parse(storedHistory);
-    
-      $.each(searchHistory, function( i, searchHistory){
+
+    searchHistory = JSON.parse(storedHistory);
+
+      $.each(searchHistory, function(i, searchHistory){
         $("#search-history").append(`
         <button class="button btn-history is-fullwidth" data-search="${searchHistory}">${searchHistory}</button>
         `)
@@ -136,30 +129,21 @@ function renderSearches() {
 }
   
 
-// function setHistory(search) {
+function setHistory(search) {
     
-//     searchHistory.push(search);
+    searchHist.push(search);
 
-//     localStorage.setItem('search-history', JSON.stringify(searchHistory));
-//     renderSearches();
-//   }
+    localStorage.setItem('search-history', JSON.stringify(searchHist));
+    renderSearches();
+  }
 
-//   function handleSearchHistoryClick(e) {
-//     if (!e.target.matches('.btn-history')) {
-//       return;
-//     }
-  
-//     var btn = e.target;
-//     var search = btn.getAttribute('data-search');
-//     getGeoLocation(search);
-//   }
 
   $("#search-history").on('click', function() {
     $(this).attr("data-search") 
     console.log($(this))
   });
-  
+
 renderSearches();
  searchFormEl.addEventListener('submit', formSubmitHandler);
-//  searchHistoryEL.addEventListener('click', handleSearchHistoryClick);
+
 
