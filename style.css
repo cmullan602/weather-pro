@@ -8,3 +8,19 @@ header{
 .container {
     padding: 20px
 }
+
+.card {
+  background-color: #130ff6;
+  color: white;
+  padding: 10px;
+}
+
+.today-new {
+    padding:30px;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.today h2 {
+    font-size: 20px;
+}

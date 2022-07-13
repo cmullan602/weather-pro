@@ -23,38 +23,38 @@
       </section> 
     </header>
     <div class="container columns">
-        <form class="column is-one-quarter">
-          <p>Search for a City:</p>
-          <div class="pb-6">
-            <input 
-              class="input is-rounded mt-2"
-              id="form-input"
-              type="text" 
-              placeholder="Seattle"
-            />
-            <button
-              type="submit"
-              class="button is-fullwidth is-link is-rounded mt-2"
-              id="search-btn"
-              >
-              Search
-            </button>
-          </div>
-        </form>
-        <div class="column" id="today">
-          <p>is second column</p>
-          <p class="pt-6">hello</p>
+        <div class="column is-one-quarter">
+            <h2>Search for a City:</h2>
+            <form class="column" id="search-form">
+                <input 
+                class="input is-rounded mt-2"
+                id="form-input"
+                type="text" 
+                placeholder="Seattle"
+                />
+                <button
+                type="submit"
+                class="button is-fullwidth is-link is-rounded mt-2"
+                id="search-btn"
+                >
+                Search
+                </button>
+            </form>
+            <div id="search-history">
+            </div>
+        </div>
+        <div class="container ">
+          <div class="today container"></div>
+          <div class="container columns forecast"></div>
         </div>
     </div>
-    <div class="container columns">
-        <div class="column is-one-quarter" id="search-history">
-            placeholder
-        </div>
-        <div class="column container columns" id="forecast">
-            placeholder
-        </div>
-    </div>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="script.js"></script>
 </html>
