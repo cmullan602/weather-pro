@@ -1,7 +1,7 @@
 var weatherApiKey ='da8c5a6540ac11ba3df901df43f83982';
 var weatherDirectUrl = 'http://api.openweathermap.org/geo/1.0/direct';
 var weatherGeoUrl = 'https://api.openweathermap.org/data/2.5/onecall'
-var searchHist = [];
+var searchHistoryArr = [];
 var formInputEl = document.querySelector('#form-input');
 var searchFormEl = document.querySelector('#search-form')
 var today = moment().format("MMM Do, YYYY");
