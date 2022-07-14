@@ -1,9 +1,12 @@
 body {
     width: 100vw;
     height: 100vh;
+    color: #040404;
 }
-header{
+.hero{
     background: linear-gradient(to right, #130ff6, #13a8f2, #14efeb);
+    justify-content: center;
+   
 }
 .container {
     padding: 20px
@@ -23,4 +26,8 @@ header{
 
 .today h2 {
     font-size: 20px;
+}
+
+#search-history {
+    border-top: #040404 solid 2px;
 }

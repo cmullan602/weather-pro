@@ -119,7 +119,7 @@ var formSubmitHandler = function (event) {
     $(searchHistoryEL).empty();
     $(searchHistoryArr).each(function (i, searchHistory) {
       $(searchHistoryEL).append(`
-          <button class="button btn-history is-fullwidth" data-search="${searchHistory}">${searchHistory}</button>
+          <button class="button btn-history is-fullwidth mt-2" data-search="${searchHistory}">${searchHistory}</button>
           `)
     });
   
@@ -147,9 +147,10 @@ var formSubmitHandler = function (event) {
 
 
 
-  $("#search-history").on('click', function() {
-    $(this).attr("data-search") 
-    console.log($(this))
+  $('.btn-history').on('click', function() {
+    var redo = $(this).attr("data-search") 
+    console.log(redo)
+    getGeoLocation(redo)
   });
 
 renderSearches();
