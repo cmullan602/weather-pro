@@ -99,7 +99,7 @@ var formSubmitHandler = function (event) {
         if (i == 6) {
             return false;
       }
-
+           
           $('.forecast').append(
               `<div class="column card m-2">
               <p>${moment.unix(forecast.dt).format("MM/DD/YYYY")}</p>
