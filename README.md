@@ -14,7 +14,7 @@
 
 ### Finished Website
 
-[Finished Website](/assets/Images/finished-project.png)
+[Finished Website](/assets/Images/website.png)
 
 #### Finished Website Link
 
