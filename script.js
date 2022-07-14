@@ -115,27 +115,36 @@ var formSubmitHandler = function (event) {
 
 
 
-function renderSearches() {
-    var storedHistory = localStorage.getItem('search-history');
-
-    searchHistory = JSON.parse(storedHistory);
-
-      $.each(searchHistory, function(i, searchHistory){
-        $("#search-history").append(`
-        <button class="button btn-history is-fullwidth" data-search="${searchHistory}">${searchHistory}</button>
-        `)
+  function renderSearches() {
+    $(searchHistoryEL).empty();
+    $(searchHistoryArr).each(function (i, searchHistory) {
+      $(searchHistoryEL).append(`
+          <button class="button btn-history is-fullwidth" data-search="${searchHistory}">${searchHistory}</button>
+          `)
     });
-    
-}
   
+  }
 
-function setHistory(search) {
-    
-    searchHist.push(search);
 
-    localStorage.setItem('search-history', JSON.stringify(searchHist));
+  function initSearchHistory(){
+    var storedHistory = localStorage.getItem('search-history');
+    if(storedHistory){
+       searchHistoryArr = JSON.parse(storedHistory);
+    }
+    renderSearches()
+  }
+
+  initSearchHistory();
+
+  function setHistory(search) {
+    if (searchHistoryArr.indexOf(search) !== -1) {
+      return;
+    }
+    searchHistoryArr.push(search);
+    localStorage.setItem('search-history', JSON.stringify(searchHistoryArr));
     renderSearches();
   }
+
 
 
   $("#search-history").on('click', function() {
