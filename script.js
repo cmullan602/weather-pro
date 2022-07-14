@@ -101,7 +101,7 @@ var formSubmitHandler = function (event) {
       }
 
           $('.forecast').append(
-              `<div class="column card">
+              `<div class="column card m-2">
               <p>${moment.unix(forecast.dt).format("MM/DD/YYYY")}</p>
               <img src='https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png'>
               <p>Temp: ${forecast.temp.day}</p>
@@ -113,14 +113,18 @@ var formSubmitHandler = function (event) {
 
   }
 
-
-
   function renderSearches() {
     $(searchHistoryEL).empty();
     $(searchHistoryArr).each(function (i, searchHistory) {
       $(searchHistoryEL).append(`
           <button class="button btn-history is-fullwidth mt-2" data-search="${searchHistory}">${searchHistory}</button>
           `)
+
+          $('.btn-history').on('click', function() {
+            var string = $(this).attr('data-search')
+            getGeoLocation(string)
+          });
+        
     });
   
   }
@@ -145,13 +149,6 @@ var formSubmitHandler = function (event) {
     renderSearches();
   }
 
-
-
-  $('.btn-history').on('click', function() {
-    var redo = $(this).attr("data-search") 
-    console.log(redo)
-    getGeoLocation(redo)
-  });
 
 renderSearches();
  searchFormEl.addEventListener('submit', formSubmitHandler);
