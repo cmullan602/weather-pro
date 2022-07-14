@@ -69,7 +69,7 @@ var formSubmitHandler = function (event) {
 
     $('.today').html(
         `<div class="today-new">
-        <h2>${name} ${today} <img src='http://openweathermap.org/img/wn/${icon}@2x.png'></h2>
+        <h2>${name} ${today} <img src='https://openweathermap.org/img/wn/${icon}@2x.png'></h2>
         <p>Current temp: ${curentTemp}</p>
         <p>Wind: ${wind}</p>
         <p>Humidity: ${humidity}</p>
@@ -103,7 +103,7 @@ var formSubmitHandler = function (event) {
           $('.forecast').append(
               `<div class="column card">
               <p>${moment.unix(forecast.dt).format("MM/DD/YYYY")}</p>
-              <img src='http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png'>
+              <img src='https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png'>
               <p>Temp: ${forecast.temp.day}</p>
               <p>Wind: ${forecast.wind_speed}</p>
               <p>Humidity: ${forecast.humidity}</p>
